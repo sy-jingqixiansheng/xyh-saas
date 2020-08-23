@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.system.dao.PermissionApiMapper">
+    <resultMap id="BaseResultMap" type="cpm.xyh.entity.system.PermissionApi">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="api_level" jdbcType="VARCHAR" property="apiLevel"/>
+        <result column="api_method" jdbcType="VARCHAR" property="apiMethod"/>
+        <result column="api_url" jdbcType="VARCHAR" property="apiUrl"/>
+    </resultMap>
+    <sql id="BasePermissionApi">
+        id,api_level,api_method,api_url
+    </sql>
+
+    <delete id="deleteById">
+        delete from pe_permission_api where id=#{id}
+    </delete>
+    <select id="findById" resultMap="BaseResultMap">
+        select <include refid="BasePermissionApi"></include>
+        from pe_permission_api where id=#{id}
+    </select>
+    <insert id="save" parameterType="cpm.xyh.entity.system.PermissionApi">
+        insert into pe_permission_api
+        ( id,api_level, api_method,api_url)
+        values
+         (#{id,jdbcType=VARCHAR},
+          #{apiLevel,jdbcType=VARCHAR},
+          #{apiMethod,jdbcType=VARCHAR},
+          #{apiUrl,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="cpm.xyh.entity.system.PermissionApi">
+        update pe_permission_api
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType="VARCHAR},
+            </if>
+            <if test="apiLevel != null">
+                api_level = #{apiLevel,jdbcType="CLOB},
+            </if>
+            <if test="apiMethod != null">
+                api_method = #{apiMethod,jdbcType="VARCHAR},
+            </if>
+            <if test="apiUrl != null">
+                api_url = #{apiUrl,jdbcType="TINYINT},
+            </if>
+        </set>
+        where id=#{id,jdbcType="VARCHAR}
+    </update>
+</mapper>

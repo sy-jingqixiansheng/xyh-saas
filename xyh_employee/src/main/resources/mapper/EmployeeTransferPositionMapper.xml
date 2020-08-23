@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.employee.dao.EmployeeTransferPositionMapper">
+  <resultMap id="BaseResultMap" type="cpm.xyh.entity.employee.EmployeeTransferPosition">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="rank" jdbcType="VARCHAR" property="rank" />
+    <result column="reporting_object" jdbcType="VARCHAR" property="reportingObject" />
+    <result column="hrbp" jdbcType="VARCHAR" property="hrbp" />
+    <result column="adjustment_time" jdbcType="TIMESTAMP" property="adjustmentTime" />
+    <result column="cause_of_adjusting_post" jdbcType="CLOB" property="causeOfAdjustingPost" />
+    <result column="enclosure" jdbcType="CLOB" property="enclosure" />
+    <result column="form_of_management" jdbcType="VARCHAR" property="formOfManagement" />
+    <result column="working_city" jdbcType="VARCHAR" property="workingCity" />
+    <result column="taxable_city" jdbcType="VARCHAR" property="taxableCity" />
+    <result column="current_contract_start_time" jdbcType="VARCHAR" property="currentContractStartTime" />
+    <result column="closing_time_of_current_contract" jdbcType="VARCHAR" property="closingTimeOfCurrentContract" />
+    <result column="working_place" jdbcType="VARCHAR" property="workingPlace" />
+    <result column="initial_contract_start_time" jdbcType="VARCHAR" property="initialContractStartTime" />
+    <result column="first_contract_termination_time" jdbcType="VARCHAR" property="firstContractTerminationTime" />
+    <result column="contract_period" jdbcType="VARCHAR" property="contractPeriod" />
+    <result column="renewal_number" jdbcType="INTEGER" property="renewalNumber" />
+    <result column="recommender_business_people" jdbcType="VARCHAR" property="recommenderBusinessPeople" />
+    <result column="estatus" jdbcType="INTEGER" property="estatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    user_id, post, rank, reporting_object, hrbp, adjustment_time,cause_of_adjusting_post,enclosure,form_of_management,
+    working_city, taxable_city, current_contract_start_time, closing_time_of_current_contract, 
+    working_place, initial_contract_start_time, first_contract_termination_time, contract_period, 
+    renewal_number, recommender_business_people, estatus, create_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+    select 
+    <include refid="Base_Column_List" />
+    from em_transferposition
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+
+    delete from em_transferposition
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cpm.xyh.entity.employee.EmployeeTransferPosition">
+
+    insert into em_transferposition (user_id, post, rank, 
+      reporting_object, hrbp, adjustment_time, cause_of_adjusting_post,enclosure,
+      form_of_management, working_city, taxable_city, 
+      current_contract_start_time, closing_time_of_current_contract, 
+      working_place, initial_contract_start_time, 
+      first_contract_termination_time, contract_period, 
+      renewal_number, recommender_business_people, 
+      estatus, create_time, cause_of_adjusting_post, 
+      enclosure)
+    values (#{userId,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, #{rank,jdbcType=VARCHAR}, 
+      #{reportingObject,jdbcType=VARCHAR}, #{hrbp,jdbcType=VARCHAR}, #{adjustmentTime,jdbcType=TIMESTAMP},
+      #{causeOfAdjustingPost,jdbcType=CLOB}, #{enclosure,jdbcType=CLOB},
+      #{formOfManagement,jdbcType=VARCHAR}, #{workingCity,jdbcType=VARCHAR}, #{taxableCity,jdbcType=VARCHAR}, 
+      #{currentContractStartTime,jdbcType=VARCHAR}, #{closingTimeOfCurrentContract,jdbcType=VARCHAR}, 
+      #{workingPlace,jdbcType=VARCHAR}, #{initialContractStartTime,jdbcType=VARCHAR}, 
+      #{firstContractTerminationTime,jdbcType=VARCHAR}, #{contractPeriod,jdbcType=VARCHAR}, 
+      #{renewalNumber,jdbcType=INTEGER}, #{recommenderBusinessPeople,jdbcType=VARCHAR}, 
+      #{estatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{causeOfAdjustingPost,jdbcType=LONGVARCHAR}, 
+      #{enclosure,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cpm.xyh.entity.employee.EmployeeTransferPosition">
+
+    insert into em_transferposition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+      <if test="reportingObject != null">
+        reporting_object,
+      </if>
+      <if test="hrbp != null">
+        hrbp,
+      </if>
+      <if test="adjustmentTime != null">
+        adjustment_time,
+      </if>
+      <if test="causeOfAdjustingPost != null">
+        cause_of_adjusting_post,
+      </if>
+      <if test="enclosure != null">
+        enclosure,
+      </if>
+      <if test="formOfManagement != null">
+        form_of_management,
+      </if>
+      <if test="workingCity != null">
+        working_city,
+      </if>
+      <if test="taxableCity != null">
+        taxable_city,
+      </if>
+      <if test="currentContractStartTime != null">
+        current_contract_start_time,
+      </if>
+      <if test="closingTimeOfCurrentContract != null">
+        closing_time_of_current_contract,
+      </if>
+      <if test="workingPlace != null">
+        working_place,
+      </if>
+      <if test="initialContractStartTime != null">
+        initial_contract_start_time,
+      </if>
+      <if test="firstContractTerminationTime != null">
+        first_contract_termination_time,
+      </if>
+      <if test="contractPeriod != null">
+        contract_period,
+      </if>
+      <if test="renewalNumber != null">
+        renewal_number,
+      </if>
+      <if test="recommenderBusinessPeople != null">
+        recommender_business_people,
+      </if>
+      <if test="estatus != null">
+        estatus,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=VARCHAR},
+      </if>
+      <if test="reportingObject != null">
+        #{reportingObject,jdbcType=VARCHAR},
+      </if>
+      <if test="hrbp != null">
+        #{hrbp,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustmentTime != null">
+        #{adjustmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="causeOfAdjustingPost != null">
+        #{causeOfAdjustingPost,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="enclosure != null">
+        #{enclosure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="formOfManagement != null">
+        #{formOfManagement,jdbcType=VARCHAR},
+      </if>
+      <if test="workingCity != null">
+        #{workingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="taxableCity != null">
+        #{taxableCity,jdbcType=VARCHAR},
+      </if>
+      <if test="currentContractStartTime != null">
+        #{currentContractStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="closingTimeOfCurrentContract != null">
+        #{closingTimeOfCurrentContract,jdbcType=VARCHAR},
+      </if>
+      <if test="workingPlace != null">
+        #{workingPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="initialContractStartTime != null">
+        #{initialContractStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firstContractTerminationTime != null">
+        #{firstContractTerminationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPeriod != null">
+        #{contractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalNumber != null">
+        #{renewalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="recommenderBusinessPeople != null">
+        #{recommenderBusinessPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="estatus != null">
+        #{estatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cpm.xyh.entity.employee.EmployeeTransferPosition">
+    update em_transferposition
+    <set>
+      <if test="post != null">
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=VARCHAR},
+      </if>
+      <if test="reportingObject != null">
+        reporting_object = #{reportingObject,jdbcType=VARCHAR},
+      </if>
+      <if test="hrbp != null">
+        hrbp = #{hrbp,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustmentTime != null">
+        adjustment_time = #{adjustmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="causeOfAdjustingPost != null">
+        cause_of_adjusting_post = #{causeOfAdjustingPost,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="enclosure != null">
+        enclosure = #{enclosure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="formOfManagement != null">
+        form_of_management = #{formOfManagement,jdbcType=VARCHAR},
+      </if>
+      <if test="workingCity != null">
+        working_city = #{workingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="taxableCity != null">
+        taxable_city = #{taxableCity,jdbcType=VARCHAR},
+      </if>
+      <if test="currentContractStartTime != null">
+        current_contract_start_time = #{currentContractStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="closingTimeOfCurrentContract != null">
+        closing_time_of_current_contract = #{closingTimeOfCurrentContract,jdbcType=VARCHAR},
+      </if>
+      <if test="workingPlace != null">
+        working_place = #{workingPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="initialContractStartTime != null">
+        initial_contract_start_time = #{initialContractStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firstContractTerminationTime != null">
+        first_contract_termination_time = #{firstContractTerminationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPeriod != null">
+        contract_period = #{contractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalNumber != null">
+        renewal_number = #{renewalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="recommenderBusinessPeople != null">
+        recommender_business_people = #{recommenderBusinessPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="estatus != null">
+        estatus = #{estatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cpm.xyh.entity.employee.EmployeeTransferPosition">
+
+    update em_transferposition
+    set post = #{post,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=VARCHAR},
+      reporting_object = #{reportingObject,jdbcType=VARCHAR},
+      hrbp = #{hrbp,jdbcType=VARCHAR},
+      adjustment_time = #{adjustmentTime,jdbcType=TIMESTAMP},
+      cause_of_adjusting_post = #{causeOfAdjustingPost,jdbcType=LONGVARCHAR},
+      enclosure = #{enclosure,jdbcType=LONGVARCHAR},
+      form_of_management = #{formOfManagement,jdbcType=VARCHAR},
+      working_city = #{workingCity,jdbcType=VARCHAR},
+      taxable_city = #{taxableCity,jdbcType=VARCHAR},
+      current_contract_start_time = #{currentContractStartTime,jdbcType=VARCHAR},
+      closing_time_of_current_contract = #{closingTimeOfCurrentContract,jdbcType=VARCHAR},
+      working_place = #{workingPlace,jdbcType=VARCHAR},
+      initial_contract_start_time = #{initialContractStartTime,jdbcType=VARCHAR},
+      first_contract_termination_time = #{firstContractTerminationTime,jdbcType=VARCHAR},
+      contract_period = #{contractPeriod,jdbcType=VARCHAR},
+      renewal_number = #{renewalNumber,jdbcType=INTEGER},
+      recommender_business_people = #{recommenderBusinessPeople,jdbcType=VARCHAR},
+      estatus = #{estatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

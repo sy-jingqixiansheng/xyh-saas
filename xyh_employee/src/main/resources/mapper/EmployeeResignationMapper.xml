@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.employee.dao.EmployeeResignationMapper">
+  <resultMap id="BaseResultMap" type="cpm.xyh.entity.employee.EmployeeResignation">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="resignation_time" jdbcType="VARCHAR" property="resignationTime" />
+    <result column="type_of_turnover" jdbcType="VARCHAR" property="typeOfTurnover" />
+    <result column="reasons_for_leaving" jdbcType="VARCHAR" property="reasonsForLeaving" />
+    <result column="compensation" jdbcType="VARCHAR" property="compensation" />
+    <result column="notifications" jdbcType="VARCHAR" property="notifications" />
+    <result column="social_security_reduction_month" jdbcType="VARCHAR" property="socialSecurityReductionMonth" />
+    <result column="provident_fund_reduction_month" jdbcType="VARCHAR" property="providentFundReductionMonth" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, resignation_time, type_of_turnover, reasons_for_leaving, compensation, notifications, 
+    social_security_reduction_month, provident_fund_reduction_month, picture, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from em_resignation
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from em_resignation
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cpm.xyh.entity.employee.EmployeeResignation">
+    insert into em_resignation (user_id, resignation_time, type_of_turnover, 
+      reasons_for_leaving, compensation, notifications, 
+      social_security_reduction_month, provident_fund_reduction_month, 
+      picture, create_time)
+    values (#{userId,jdbcType=VARCHAR}, #{resignationTime,jdbcType=VARCHAR}, #{typeOfTurnover,jdbcType=VARCHAR}, 
+      #{reasonsForLeaving,jdbcType=VARCHAR}, #{compensation,jdbcType=VARCHAR}, #{notifications,jdbcType=VARCHAR}, 
+      #{socialSecurityReductionMonth,jdbcType=VARCHAR}, #{providentFundReductionMonth,jdbcType=VARCHAR}, 
+      #{picture,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cpm.xyh.entity.employee.EmployeeResignation">
+    insert into em_resignation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="resignationTime != null">
+        resignation_time,
+      </if>
+      <if test="typeOfTurnover != null">
+        type_of_turnover,
+      </if>
+      <if test="reasonsForLeaving != null">
+        reasons_for_leaving,
+      </if>
+      <if test="compensation != null">
+        compensation,
+      </if>
+      <if test="notifications != null">
+        notifications,
+      </if>
+      <if test="socialSecurityReductionMonth != null">
+        social_security_reduction_month,
+      </if>
+      <if test="providentFundReductionMonth != null">
+        provident_fund_reduction_month,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="resignationTime != null">
+        #{resignationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="typeOfTurnover != null">
+        #{typeOfTurnover,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonsForLeaving != null">
+        #{reasonsForLeaving,jdbcType=VARCHAR},
+      </if>
+      <if test="compensation != null">
+        #{compensation,jdbcType=VARCHAR},
+      </if>
+      <if test="notifications != null">
+        #{notifications,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityReductionMonth != null">
+        #{socialSecurityReductionMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="providentFundReductionMonth != null">
+        #{providentFundReductionMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cpm.xyh.entity.employee.EmployeeResignation">
+    update em_resignation
+    <set>
+      <if test="resignationTime != null">
+        resignation_time = #{resignationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="typeOfTurnover != null">
+        type_of_turnover = #{typeOfTurnover,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonsForLeaving != null">
+        reasons_for_leaving = #{reasonsForLeaving,jdbcType=VARCHAR},
+      </if>
+      <if test="compensation != null">
+        compensation = #{compensation,jdbcType=VARCHAR},
+      </if>
+      <if test="notifications != null">
+        notifications = #{notifications,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityReductionMonth != null">
+        social_security_reduction_month = #{socialSecurityReductionMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="providentFundReductionMonth != null">
+        provident_fund_reduction_month = #{providentFundReductionMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cpm.xyh.entity.employee.EmployeeResignation">
+    update em_resignation
+    set resignation_time = #{resignationTime,jdbcType=VARCHAR},
+      type_of_turnover = #{typeOfTurnover,jdbcType=VARCHAR},
+      reasons_for_leaving = #{reasonsForLeaving,jdbcType=VARCHAR},
+      compensation = #{compensation,jdbcType=VARCHAR},
+      notifications = #{notifications,jdbcType=VARCHAR},
+      social_security_reduction_month = #{socialSecurityReductionMonth,jdbcType=VARCHAR},
+      provident_fund_reduction_month = #{providentFundReductionMonth,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

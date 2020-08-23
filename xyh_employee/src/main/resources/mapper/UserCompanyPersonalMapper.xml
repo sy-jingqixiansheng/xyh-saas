@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.employee.dao.UserCompanyPersonalMapper">
+  <resultMap id="BaseResultMap" type="cpm.xyh.entity.employee.UserCompanyPersonal">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="time_of_entry" jdbcType="VARCHAR" property="timeOfEntry" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="date_of_birth" jdbcType="VARCHAR" property="dateOfBirth" />
+    <result column="the_highest_degree_of_education" jdbcType="VARCHAR" property="theHighestDegreeOfEducation" />
+    <result column="national_area" jdbcType="VARCHAR" property="nationalArea" />
+    <result column="passport_no" jdbcType="VARCHAR" property="passportNo" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="id_card_photo_positive" jdbcType="VARCHAR" property="idCardPhotoPositive" />
+    <result column="id_card_photo_back" jdbcType="VARCHAR" property="idCardPhotoBack" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="staff_photo" jdbcType="VARCHAR" property="staffPhoto" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="zodiac" jdbcType="VARCHAR" property="zodiac" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="constellation" jdbcType="VARCHAR" property="constellation" />
+    <result column="blood_type" jdbcType="VARCHAR" property="bloodType" />
+    <result column="domicile" jdbcType="VARCHAR" property="domicile" />
+    <result column="political_outlook" jdbcType="VARCHAR" property="politicalOutlook" />
+    <result column="time_to_join_the_party" jdbcType="VARCHAR" property="timeToJoinTheParty" />
+    <result column="archiving_organization" jdbcType="VARCHAR" property="archivingOrganization" />
+    <result column="state_of_children" jdbcType="VARCHAR" property="stateOfChildren" />
+    <result column="do_children_have_commercial_insurance" jdbcType="VARCHAR" property="doChildrenHaveCommercialInsurance" />
+    <result column="is_there_any_violation_of_law_or_discipline" jdbcType="VARCHAR" property="isThereAnyViolationOfLawOrDiscipline" />
+    <result column="are_there_any_major_medical_histories" jdbcType="VARCHAR" property="areThereAnyMajorMedicalHistories" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="residence_card_city" jdbcType="VARCHAR" property="residenceCardCity" />
+    <result column="date_of_residence_permit" jdbcType="VARCHAR" property="dateOfResidencePermit" />
+    <result column="residence_permit_deadline" jdbcType="VARCHAR" property="residencePermitDeadline" />
+    <result column="place_of_residence" jdbcType="VARCHAR" property="placeOfResidence" />
+    <result column="postal_address" jdbcType="VARCHAR" property="postalAddress" />
+    <result column="contact_the_mobile_phone" jdbcType="VARCHAR" property="contactTheMobilePhone" />
+    <result column="personal_mailbox" jdbcType="VARCHAR" property="personalMailbox" />
+    <result column="emergency_contact" jdbcType="VARCHAR" property="emergencyContact" />
+    <result column="emergency_contact_number" jdbcType="VARCHAR" property="emergencyContactNumber" />
+    <result column="social_security_computer_number" jdbcType="VARCHAR" property="socialSecurityComputerNumber" />
+    <result column="provident_fund_account" jdbcType="VARCHAR" property="providentFundAccount" />
+    <result column="bank_card_number" jdbcType="VARCHAR" property="bankCardNumber" />
+    <result column="opening_bank" jdbcType="VARCHAR" property="openingBank" />
+    <result column="educational_type" jdbcType="VARCHAR" property="educationalType" />
+    <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool" />
+    <result column="enrolment_time" jdbcType="VARCHAR" property="enrolmentTime" />
+    <result column="graduation_time" jdbcType="VARCHAR" property="graduationTime" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="graduation_certificate" jdbcType="VARCHAR" property="graduationCertificate" />
+    <result column="certificate_of_academic_degree" jdbcType="VARCHAR" property="certificateOfAcademicDegree" />
+    <result column="home_company" jdbcType="VARCHAR" property="homeCompany" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="resume" jdbcType="VARCHAR" property="resume" />
+    <result column="is_there_any_competition_restriction" jdbcType="VARCHAR" property="isThereAnyCompetitionRestriction" />
+    <result column="proof_of_departure_of_former_company" jdbcType="VARCHAR" property="proofOfDepartureOfFormerCompany" />
+    <result column="remarks" jdbcType="CLOB" property="remarks" />
+  </resultMap>
+  <resultMap id="BaseResultReportResultMap" type="cpm.xyh.entity.employee.response.EmployeeReportResult">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="time_of_entry" jdbcType="VARCHAR" property="timeOfEntry" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="date_of_birth" jdbcType="VARCHAR" property="dateOfBirth" />
+    <result column="the_highest_degree_of_education" jdbcType="VARCHAR" property="theHighestDegreeOfEducation" />
+    <result column="national_area" jdbcType="VARCHAR" property="nationalArea" />
+    <result column="passport_no" jdbcType="VARCHAR" property="passportNo" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="id_card_photo_positive" jdbcType="VARCHAR" property="idCardPhotoPositive" />
+    <result column="id_card_photo_back" jdbcType="VARCHAR" property="idCardPhotoBack" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="staff_photo" jdbcType="VARCHAR" property="staffPhoto" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="zodiac" jdbcType="VARCHAR" property="zodiac" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="constellation" jdbcType="VARCHAR" property="constellation" />
+    <result column="blood_type" jdbcType="VARCHAR" property="bloodType" />
+    <result column="domicile" jdbcType="VARCHAR" property="domicile" />
+    <result column="political_outlook" jdbcType="VARCHAR" property="politicalOutlook" />
+    <result column="time_to_join_the_party" jdbcType="VARCHAR" property="timeToJoinTheParty" />
+    <result column="archiving_organization" jdbcType="VARCHAR" property="archivingOrganization" />
+    <result column="state_of_children" jdbcType="VARCHAR" property="stateOfChildren" />
+    <result column="do_children_have_commercial_insurance" jdbcType="VARCHAR" property="doChildrenHaveCommercialInsurance" />
+    <result column="is_there_any_violation_of_law_or_discipline" jdbcType="VARCHAR" property="isThereAnyViolationOfLawOrDiscipline" />
+    <result column="are_there_any_major_medical_histories" jdbcType="VARCHAR" property="areThereAnyMajorMedicalHistories" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="residence_card_city" jdbcType="VARCHAR" property="residenceCardCity" />
+    <result column="date_of_residence_permit" jdbcType="VARCHAR" property="dateOfResidencePermit" />
+    <result column="residence_permit_deadline" jdbcType="VARCHAR" property="residencePermitDeadline" />
+    <result column="place_of_residence" jdbcType="VARCHAR" property="placeOfResidence" />
+    <result column="postal_address" jdbcType="VARCHAR" property="postalAddress" />
+    <result column="contact_the_mobile_phone" jdbcType="VARCHAR" property="contactTheMobilePhone" />
+    <result column="personal_mailbox" jdbcType="VARCHAR" property="personalMailbox" />
+    <result column="emergency_contact" jdbcType="VARCHAR" property="emergencyContact" />
+    <result column="emergency_contact_number" jdbcType="VARCHAR" property="emergencyContactNumber" />
+    <result column="social_security_computer_number" jdbcType="VARCHAR" property="socialSecurityComputerNumber" />
+    <result column="provident_fund_account" jdbcType="VARCHAR" property="providentFundAccount" />
+    <result column="bank_card_number" jdbcType="VARCHAR" property="bankCardNumber" />
+    <result column="opening_bank" jdbcType="VARCHAR" property="openingBank" />
+    <result column="educational_type" jdbcType="VARCHAR" property="educationalType" />
+    <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool" />
+    <result column="enrolment_time" jdbcType="VARCHAR" property="enrolmentTime" />
+    <result column="graduation_time" jdbcType="VARCHAR" property="graduationTime" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="graduation_certificate" jdbcType="VARCHAR" property="graduationCertificate" />
+    <result column="certificate_of_academic_degree" jdbcType="VARCHAR" property="certificateOfAcademicDegree" />
+    <result column="home_company" jdbcType="VARCHAR" property="homeCompany" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="resume" jdbcType="VARCHAR" property="resume" />
+    <result column="is_there_any_competition_restriction" jdbcType="VARCHAR" property="isThereAnyCompetitionRestriction" />
+    <result column="proof_of_departure_of_former_company" jdbcType="VARCHAR" property="proofOfDepartureOfFormerCompany" />
+    <result column="resignation_time" jdbcType="VARCHAR" property="resignationTime" />
+    <result column="type_of_turnover" jdbcType="VARCHAR" property="typeOfTurnover" />
+    <result column="reasons_for_leaving" jdbcType="VARCHAR" property="reasonsForLeaving" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, username, mobile, time_of_entry, department_name, company_id, sex, date_of_birth, 
+    the_highest_degree_of_education, national_area, passport_no, id_number, id_card_photo_positive, 
+    id_card_photo_back, native_place, nation, english_name, marital_status, staff_photo, 
+    birthday, zodiac, age, constellation, blood_type, domicile, political_outlook, time_to_join_the_party, 
+    archiving_organization, state_of_children, do_children_have_commercial_insurance, 
+    is_there_any_violation_of_law_or_discipline, are_there_any_major_medical_histories, 
+    qq, wechat, residence_card_city, date_of_residence_permit, residence_permit_deadline, 
+    place_of_residence, postal_address, contact_the_mobile_phone, personal_mailbox, emergency_contact, 
+    emergency_contact_number, social_security_computer_number, provident_fund_account, 
+    bank_card_number, opening_bank, educational_type, graduate_school, enrolment_time, 
+    graduation_time, major, graduation_certificate, certificate_of_academic_degree, home_company, 
+    title, resume, is_there_any_competition_restriction, proof_of_departure_of_former_company,remarks
+  </sql>
+  <sql id="Column_List">
+    a.user_id, a.username, a.mobile, a.time_of_entry, a.department_name, a.company_id, a.sex, a.date_of_birth, 
+    a.the_highest_degree_of_education, a.national_area, a.passport_no, a.id_number, a.id_card_photo_positive, 
+    a.id_card_photo_back, a.native_place, a.nation, a.english_name, a.marital_status, a.staff_photo, 
+    a.birthday, a.zodiac, a.age, a.constellation, a.blood_type, a.domicile, a.political_outlook, a.time_to_join_the_party, 
+    a.archiving_organization, a.state_of_children, a.do_children_have_commercial_insurance, 
+    a.is_there_any_violation_of_law_or_discipline, a.are_there_any_major_medical_histories, 
+    a.qq, a.wechat, a.residence_card_city, a.date_of_residence_permit, a.residence_permit_deadline, 
+    a.place_of_residence, a.postal_address, a.contact_the_mobile_phone, a.personal_mailbox, a.emergency_contact, 
+    a.emergency_contact_number, a.social_security_computer_number, a.provident_fund_account, 
+    a.bank_card_number, a.opening_bank, a.educational_type, a.graduate_school, a.enrolment_time, 
+    a.graduation_time, a.major, a.graduation_certificate, a.certificate_of_academic_degree, a.home_company, 
+    a.title, a.resume, a.is_there_any_competition_restriction, a.proof_of_departure_of_former_company,a.remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from em_user_company_personal
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from em_user_company_personal
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cpm.xyh.entity.employee.UserCompanyPersonal">
+    insert into em_user_company_personal (user_id, username, mobile, 
+      time_of_entry, department_name, company_id, 
+      sex, date_of_birth, the_highest_degree_of_education, 
+      national_area, passport_no, id_number, 
+      id_card_photo_positive, id_card_photo_back, native_place, 
+      nation, english_name, marital_status, 
+      staff_photo, birthday, zodiac, 
+      age, constellation, blood_type, 
+      domicile, political_outlook, time_to_join_the_party, 
+      archiving_organization, state_of_children, 
+      do_children_have_commercial_insurance, is_there_any_violation_of_law_or_discipline, 
+      are_there_any_major_medical_histories, qq, wechat, 
+      residence_card_city, date_of_residence_permit, 
+      residence_permit_deadline, place_of_residence, 
+      postal_address, contact_the_mobile_phone, personal_mailbox, 
+      emergency_contact, emergency_contact_number, 
+      social_security_computer_number, provident_fund_account, 
+      bank_card_number, opening_bank, educational_type, 
+      graduate_school, enrolment_time, graduation_time, 
+      major, graduation_certificate, certificate_of_academic_degree, 
+      home_company, title, resume, 
+      is_there_any_competition_restriction, proof_of_departure_of_former_company, 
+      remarks)
+    values (#{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{timeOfEntry,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{dateOfBirth,jdbcType=VARCHAR}, #{theHighestDegreeOfEducation,jdbcType=VARCHAR}, 
+      #{nationalArea,jdbcType=VARCHAR}, #{passportNo,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, 
+      #{idCardPhotoPositive,jdbcType=VARCHAR}, #{idCardPhotoBack,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
+      #{nation,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, 
+      #{staffPhoto,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{zodiac,jdbcType=VARCHAR}, 
+      #{age,jdbcType=VARCHAR}, #{constellation,jdbcType=VARCHAR}, #{bloodType,jdbcType=VARCHAR}, 
+      #{domicile,jdbcType=VARCHAR}, #{politicalOutlook,jdbcType=VARCHAR}, #{timeToJoinTheParty,jdbcType=VARCHAR}, 
+      #{archivingOrganization,jdbcType=VARCHAR}, #{stateOfChildren,jdbcType=VARCHAR}, 
+      #{doChildrenHaveCommercialInsurance,jdbcType=VARCHAR}, #{isThereAnyViolationOfLawOrDiscipline,jdbcType=VARCHAR}, 
+      #{areThereAnyMajorMedicalHistories,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{residenceCardCity,jdbcType=VARCHAR}, #{dateOfResidencePermit,jdbcType=VARCHAR}, 
+      #{residencePermitDeadline,jdbcType=VARCHAR}, #{placeOfResidence,jdbcType=VARCHAR}, 
+      #{postalAddress,jdbcType=VARCHAR}, #{contactTheMobilePhone,jdbcType=VARCHAR}, #{personalMailbox,jdbcType=VARCHAR}, 
+      #{emergencyContact,jdbcType=VARCHAR}, #{emergencyContactNumber,jdbcType=VARCHAR}, 
+      #{socialSecurityComputerNumber,jdbcType=VARCHAR}, #{providentFundAccount,jdbcType=VARCHAR}, 
+      #{bankCardNumber,jdbcType=VARCHAR}, #{openingBank,jdbcType=VARCHAR}, #{educationalType,jdbcType=VARCHAR}, 
+      #{graduateSchool,jdbcType=VARCHAR}, #{enrolmentTime,jdbcType=VARCHAR}, #{graduationTime,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{graduationCertificate,jdbcType=VARCHAR}, #{certificateOfAcademicDegree,jdbcType=VARCHAR}, 
+      #{homeCompany,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{resume,jdbcType=VARCHAR}, 
+      #{isThereAnyCompetitionRestriction,jdbcType=VARCHAR}, #{proofOfDepartureOfFormerCompany,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cpm.xyh.entity.employee.UserCompanyPersonal">
+    insert into em_user_company_personal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="timeOfEntry != null">
+        time_of_entry,
+      </if>
+      <if test="departmentName != null">
+        department_name,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="dateOfBirth != null">
+        date_of_birth,
+      </if>
+      <if test="theHighestDegreeOfEducation != null">
+        the_highest_degree_of_education,
+      </if>
+      <if test="nationalArea != null">
+        national_area,
+      </if>
+      <if test="passportNo != null">
+        passport_no,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="idCardPhotoPositive != null">
+        id_card_photo_positive,
+      </if>
+      <if test="idCardPhotoBack != null">
+        id_card_photo_back,
+      </if>
+      <if test="nativePlace != null">
+        native_place,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="englishName != null">
+        english_name,
+      </if>
+      <if test="maritalStatus != null">
+        marital_status,
+      </if>
+      <if test="staffPhoto != null">
+        staff_photo,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="zodiac != null">
+        zodiac,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="constellation != null">
+        constellation,
+      </if>
+      <if test="bloodType != null">
+        blood_type,
+      </if>
+      <if test="domicile != null">
+        domicile,
+      </if>
+      <if test="politicalOutlook != null">
+        political_outlook,
+      </if>
+      <if test="timeToJoinTheParty != null">
+        time_to_join_the_party,
+      </if>
+      <if test="archivingOrganization != null">
+        archiving_organization,
+      </if>
+      <if test="stateOfChildren != null">
+        state_of_children,
+      </if>
+      <if test="doChildrenHaveCommercialInsurance != null">
+        do_children_have_commercial_insurance,
+      </if>
+      <if test="isThereAnyViolationOfLawOrDiscipline != null">
+        is_there_any_violation_of_law_or_discipline,
+      </if>
+      <if test="areThereAnyMajorMedicalHistories != null">
+        are_there_any_major_medical_histories,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="residenceCardCity != null">
+        residence_card_city,
+      </if>
+      <if test="dateOfResidencePermit != null">
+        date_of_residence_permit,
+      </if>
+      <if test="residencePermitDeadline != null">
+        residence_permit_deadline,
+      </if>
+      <if test="placeOfResidence != null">
+        place_of_residence,
+      </if>
+      <if test="postalAddress != null">
+        postal_address,
+      </if>
+      <if test="contactTheMobilePhone != null">
+        contact_the_mobile_phone,
+      </if>
+      <if test="personalMailbox != null">
+        personal_mailbox,
+      </if>
+      <if test="emergencyContact != null">
+        emergency_contact,
+      </if>
+      <if test="emergencyContactNumber != null">
+        emergency_contact_number,
+      </if>
+      <if test="socialSecurityComputerNumber != null">
+        social_security_computer_number,
+      </if>
+      <if test="providentFundAccount != null">
+        provident_fund_account,
+      </if>
+      <if test="bankCardNumber != null">
+        bank_card_number,
+      </if>
+      <if test="openingBank != null">
+        opening_bank,
+      </if>
+      <if test="educationalType != null">
+        educational_type,
+      </if>
+      <if test="graduateSchool != null">
+        graduate_school,
+      </if>
+      <if test="enrolmentTime != null">
+        enrolment_time,
+      </if>
+      <if test="graduationTime != null">
+        graduation_time,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="graduationCertificate != null">
+        graduation_certificate,
+      </if>
+      <if test="certificateOfAcademicDegree != null">
+        certificate_of_academic_degree,
+      </if>
+      <if test="homeCompany != null">
+        home_company,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="resume != null">
+        resume,
+      </if>
+      <if test="isThereAnyCompetitionRestriction != null">
+        is_there_any_competition_restriction,
+      </if>
+      <if test="proofOfDepartureOfFormerCompany != null">
+        proof_of_departure_of_former_company,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="timeOfEntry != null">
+        #{timeOfEntry,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfBirth != null">
+        #{dateOfBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="theHighestDegreeOfEducation != null">
+        #{theHighestDegreeOfEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="nationalArea != null">
+        #{nationalArea,jdbcType=VARCHAR},
+      </if>
+      <if test="passportNo != null">
+        #{passportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPhotoPositive != null">
+        #{idCardPhotoPositive,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPhotoBack != null">
+        #{idCardPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null">
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null">
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="staffPhoto != null">
+        #{staffPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="zodiac != null">
+        #{zodiac,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="constellation != null">
+        #{constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodType != null">
+        #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null">
+        #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalOutlook != null">
+        #{politicalOutlook,jdbcType=VARCHAR},
+      </if>
+      <if test="timeToJoinTheParty != null">
+        #{timeToJoinTheParty,jdbcType=VARCHAR},
+      </if>
+      <if test="archivingOrganization != null">
+        #{archivingOrganization,jdbcType=VARCHAR},
+      </if>
+      <if test="stateOfChildren != null">
+        #{stateOfChildren,jdbcType=VARCHAR},
+      </if>
+      <if test="doChildrenHaveCommercialInsurance != null">
+        #{doChildrenHaveCommercialInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="isThereAnyViolationOfLawOrDiscipline != null">
+        #{isThereAnyViolationOfLawOrDiscipline,jdbcType=VARCHAR},
+      </if>
+      <if test="areThereAnyMajorMedicalHistories != null">
+        #{areThereAnyMajorMedicalHistories,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="residenceCardCity != null">
+        #{residenceCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfResidencePermit != null">
+        #{dateOfResidencePermit,jdbcType=VARCHAR},
+      </if>
+      <if test="residencePermitDeadline != null">
+        #{residencePermitDeadline,jdbcType=VARCHAR},
+      </if>
+      <if test="placeOfResidence != null">
+        #{placeOfResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="postalAddress != null">
+        #{postalAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactTheMobilePhone != null">
+        #{contactTheMobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="personalMailbox != null">
+        #{personalMailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null">
+        #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactNumber != null">
+        #{emergencyContactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityComputerNumber != null">
+        #{socialSecurityComputerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="providentFundAccount != null">
+        #{providentFundAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNumber != null">
+        #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="openingBank != null">
+        #{openingBank,jdbcType=VARCHAR},
+      </if>
+      <if test="educationalType != null">
+        #{educationalType,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null">
+        #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="enrolmentTime != null">
+        #{enrolmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null">
+        #{graduationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationCertificate != null">
+        #{graduationCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateOfAcademicDegree != null">
+        #{certificateOfAcademicDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="homeCompany != null">
+        #{homeCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="resume != null">
+        #{resume,jdbcType=VARCHAR},
+      </if>
+      <if test="isThereAnyCompetitionRestriction != null">
+        #{isThereAnyCompetitionRestriction,jdbcType=VARCHAR},
+      </if>
+      <if test="proofOfDepartureOfFormerCompany != null">
+        #{proofOfDepartureOfFormerCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cpm.xyh.entity.employee.UserCompanyPersonal">
+    update em_user_company_personal
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="timeOfEntry != null">
+        time_of_entry = #{timeOfEntry,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfBirth != null">
+        date_of_birth = #{dateOfBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="theHighestDegreeOfEducation != null">
+        the_highest_degree_of_education = #{theHighestDegreeOfEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="nationalArea != null">
+        national_area = #{nationalArea,jdbcType=VARCHAR},
+      </if>
+      <if test="passportNo != null">
+        passport_no = #{passportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPhotoPositive != null">
+        id_card_photo_positive = #{idCardPhotoPositive,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardPhotoBack != null">
+        id_card_photo_back = #{idCardPhotoBack,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null">
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null">
+        english_name = #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        marital_status = #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="staffPhoto != null">
+        staff_photo = #{staffPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="zodiac != null">
+        zodiac = #{zodiac,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="constellation != null">
+        constellation = #{constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodType != null">
+        blood_type = #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null">
+        domicile = #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalOutlook != null">
+        political_outlook = #{politicalOutlook,jdbcType=VARCHAR},
+      </if>
+      <if test="timeToJoinTheParty != null">
+        time_to_join_the_party = #{timeToJoinTheParty,jdbcType=VARCHAR},
+      </if>
+      <if test="archivingOrganization != null">
+        archiving_organization = #{archivingOrganization,jdbcType=VARCHAR},
+      </if>
+      <if test="stateOfChildren != null">
+        state_of_children = #{stateOfChildren,jdbcType=VARCHAR},
+      </if>
+      <if test="doChildrenHaveCommercialInsurance != null">
+        do_children_have_commercial_insurance = #{doChildrenHaveCommercialInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="isThereAnyViolationOfLawOrDiscipline != null">
+        is_there_any_violation_of_law_or_discipline = #{isThereAnyViolationOfLawOrDiscipline,jdbcType=VARCHAR},
+      </if>
+      <if test="areThereAnyMajorMedicalHistories != null">
+        are_there_any_major_medical_histories = #{areThereAnyMajorMedicalHistories,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="residenceCardCity != null">
+        residence_card_city = #{residenceCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfResidencePermit != null">
+        date_of_residence_permit = #{dateOfResidencePermit,jdbcType=VARCHAR},
+      </if>
+      <if test="residencePermitDeadline != null">
+        residence_permit_deadline = #{residencePermitDeadline,jdbcType=VARCHAR},
+      </if>
+      <if test="placeOfResidence != null">
+        place_of_residence = #{placeOfResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="postalAddress != null">
+        postal_address = #{postalAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactTheMobilePhone != null">
+        contact_the_mobile_phone = #{contactTheMobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="personalMailbox != null">
+        personal_mailbox = #{personalMailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null">
+        emergency_contact = #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactNumber != null">
+        emergency_contact_number = #{emergencyContactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityComputerNumber != null">
+        social_security_computer_number = #{socialSecurityComputerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="providentFundAccount != null">
+        provident_fund_account = #{providentFundAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNumber != null">
+        bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="openingBank != null">
+        opening_bank = #{openingBank,jdbcType=VARCHAR},
+      </if>
+      <if test="educationalType != null">
+        educational_type = #{educationalType,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null">
+        graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="enrolmentTime != null">
+        enrolment_time = #{enrolmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null">
+        graduation_time = #{graduationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationCertificate != null">
+        graduation_certificate = #{graduationCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateOfAcademicDegree != null">
+        certificate_of_academic_degree = #{certificateOfAcademicDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="homeCompany != null">
+        home_company = #{homeCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="resume != null">
+        resume = #{resume,jdbcType=VARCHAR},
+      </if>
+      <if test="isThereAnyCompetitionRestriction != null">
+        is_there_any_competition_restriction = #{isThereAnyCompetitionRestriction,jdbcType=VARCHAR},
+      </if>
+      <if test="proofOfDepartureOfFormerCompany != null">
+        proof_of_departure_of_former_company = #{proofOfDepartureOfFormerCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cpm.xyh.entity.employee.UserCompanyPersonal">
+    update em_user_company_personal
+    set username = #{username,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      time_of_entry = #{timeOfEntry,jdbcType=VARCHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      date_of_birth = #{dateOfBirth,jdbcType=VARCHAR},
+      the_highest_degree_of_education = #{theHighestDegreeOfEducation,jdbcType=VARCHAR},
+      national_area = #{nationalArea,jdbcType=VARCHAR},
+      passport_no = #{passportNo,jdbcType=VARCHAR},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      id_card_photo_positive = #{idCardPhotoPositive,jdbcType=VARCHAR},
+      id_card_photo_back = #{idCardPhotoBack,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      marital_status = #{maritalStatus,jdbcType=VARCHAR},
+      staff_photo = #{staffPhoto,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      zodiac = #{zodiac,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      constellation = #{constellation,jdbcType=VARCHAR},
+      blood_type = #{bloodType,jdbcType=VARCHAR},
+      domicile = #{domicile,jdbcType=VARCHAR},
+      political_outlook = #{politicalOutlook,jdbcType=VARCHAR},
+      time_to_join_the_party = #{timeToJoinTheParty,jdbcType=VARCHAR},
+      archiving_organization = #{archivingOrganization,jdbcType=VARCHAR},
+      state_of_children = #{stateOfChildren,jdbcType=VARCHAR},
+      do_children_have_commercial_insurance = #{doChildrenHaveCommercialInsurance,jdbcType=VARCHAR},
+      is_there_any_violation_of_law_or_discipline = #{isThereAnyViolationOfLawOrDiscipline,jdbcType=VARCHAR},
+      are_there_any_major_medical_histories = #{areThereAnyMajorMedicalHistories,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      residence_card_city = #{residenceCardCity,jdbcType=VARCHAR},
+      date_of_residence_permit = #{dateOfResidencePermit,jdbcType=VARCHAR},
+      residence_permit_deadline = #{residencePermitDeadline,jdbcType=VARCHAR},
+      place_of_residence = #{placeOfResidence,jdbcType=VARCHAR},
+      postal_address = #{postalAddress,jdbcType=VARCHAR},
+      contact_the_mobile_phone = #{contactTheMobilePhone,jdbcType=VARCHAR},
+      personal_mailbox = #{personalMailbox,jdbcType=VARCHAR},
+      emergency_contact = #{emergencyContact,jdbcType=VARCHAR},
+      emergency_contact_number = #{emergencyContactNumber,jdbcType=VARCHAR},
+      social_security_computer_number = #{socialSecurityComputerNumber,jdbcType=VARCHAR},
+      provident_fund_account = #{providentFundAccount,jdbcType=VARCHAR},
+      bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
+      opening_bank = #{openingBank,jdbcType=VARCHAR},
+      educational_type = #{educationalType,jdbcType=VARCHAR},
+      graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      enrolment_time = #{enrolmentTime,jdbcType=VARCHAR},
+      graduation_time = #{graduationTime,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      graduation_certificate = #{graduationCertificate,jdbcType=VARCHAR},
+      certificate_of_academic_degree = #{certificateOfAcademicDegree,jdbcType=VARCHAR},
+      home_company = #{homeCompany,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      resume = #{resume,jdbcType=VARCHAR},
+      is_there_any_competition_restriction = #{isThereAnyCompetitionRestriction,jdbcType=VARCHAR},
+      proof_of_departure_of_former_company = #{proofOfDepartureOfFormerCompany,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=LONGVARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findByReport" resultMap="BaseResultReportResultMap">
+        SELECT <include refid="Column_List"/>,
+        b.resignation_time,b.type_of_turnover,b.reasons_for_leaving FROM em_user_company_personal a left join em_resignation b on a.user_id=b.user_id
+        where a.company_id=#{companyId,jdbcType=VARCHAR} and a.time_of_entry like #{month} or (b.resignation_time like #{month})
+  </select>
+</mapper>

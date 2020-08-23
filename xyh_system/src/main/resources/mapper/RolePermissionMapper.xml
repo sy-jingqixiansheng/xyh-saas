@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.system.dao.RolePermissionMapper">
+    <insert id="assignPerms" >
+        insert ignore into pe_role_permission
+        (role_id,permission_id) values
+        <foreach item="item" collection="permIds" separator="," index="index" >
+            (#{roleId},#{item})
+        </foreach>
+    </insert>
+
+    <select id="findByRoleId" resultType="java.lang.String">
+         select permission_id from pe_role_permission where role_id=#{id,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deletePerIds" parameterType="java.util.List">
+        delete from pe_role_permission where permission_id in
+        <foreach collection="permission" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <delete id="deleteRolePer">
+         delete from pe_role_permission where role_id=#{roleId,jdbcType=VARCHAR}
+    </delete>
+
+    <select id="findByRoleIdList" parameterType="java.util.List" resultType="java.lang.String">
+        select permission_id from pe_role_permission where role_id in
+        <foreach collection="roleListIds" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

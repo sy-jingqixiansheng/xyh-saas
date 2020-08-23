@@ -1,0 +1,7 @@
+# Project exclude paths
+/xuh_common_entity/target/
+/xyh_common/target/
+/xyh_company/target/
+/xyh_employee/target/
+/xyh_gateway/target/
+/xyh_system/target/

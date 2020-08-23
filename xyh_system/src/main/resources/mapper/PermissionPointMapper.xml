@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.system.dao.PermissionPointMapper">
+    <resultMap id="BaseResultMap" type="cpm.xyh.entity.system.PermissionPoint">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="point_class" jdbcType="VARCHAR" property="pointClass"/>
+        <result column="point_icon" jdbcType="VARCHAR" property="pointIcon"/>
+        <result column="point_status" jdbcType="INTEGER" property="pointStatus"/>
+    </resultMap>
+    <sql id="BasePermissionPoint">
+        id,point_class,point_icon,point_status
+    </sql>
+
+    <delete id="deleteById">
+        delete from pe_permission_point where id=#{id}
+    </delete>
+
+    <select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="BasePermissionPoint"></include>
+        from pe_permission_point where id=#{id}
+    </select>
+    <insert id="save" parameterType="cpm.xyh.entity.system.PermissionPoint">
+        insert into pe_permission_point
+        ( id,point_class, point_icon,point_status)
+        values
+         (#{id,jdbcType=VARCHAR},
+          #{pointClass,jdbcType=VARCHAR},
+          #{pointIcon,jdbcType=VARCHAR},
+          #{pointStatus,jdbcType=INTEGER})
+
+    </insert>
+
+    <update id="update" parameterType="cpm.xyh.entity.system.PermissionPoint">
+        update pe_permission_point
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType="VARCHAR},
+            </if>
+            <if test="menuIcon != null">
+                menu_icon = #{menuIcon,jdbcType="VARCHAR},
+            </if>
+            <if test="menuOrder != null">
+                menu_order = #{menuOrder,jdbcType="VARCHAR},
+            </if>
+        </set>
+        where id=#{id,jdbcType="VARCHAR}
+    </update>
+</mapper>

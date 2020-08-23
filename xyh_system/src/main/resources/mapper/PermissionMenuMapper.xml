@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.system.dao.PermissionMenuMapper">
+    <resultMap id="BaseResultMap" type="cpm.xyh.entity.system.PermissionMenu">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="menu_icon" jdbcType="VARCHAR" property="menuIcon"/>
+        <result column="menu_order" jdbcType="VARCHAR" property="menuOrder"/>
+    </resultMap>
+    <sql id="BasePermissionMenu">
+        id,menu_icon,menu_order
+    </sql>
+    <delete id="deleteById">
+        delete from pe_permission_menu where id=#{id}
+    </delete>
+
+    <select id="findById" resultMap="BaseResultMap">
+        select <include refid="BasePermissionMenu"></include>
+        from pe_permission_menu where id=#{id}
+    </select>
+    <insert id="save" parameterType="cpm.xyh.entity.system.PermissionMenu">
+        insert into pe_permission_menu
+        ( id,menu_icon, menu_order)
+        values
+         (#{id,jdbcType=VARCHAR},
+          #{menuIcon,jdbcType=VARCHAR},
+          #{menuOrder,jdbcType=VARCHAR})
+
+    </insert>
+
+    <update id="update" parameterType="cpm.xyh.entity.system.PermissionMenu">
+        update pe_permission_menu
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType="VARCHAR},
+            </if>
+            <if test="menuIcon != null">
+                menu_icon = #{menuIcon,jdbcType="VARCHAR},
+            </if>
+            <if test="menuOrder != null">
+                menu_order = #{menuOrder,jdbcType="VARCHAR},
+            </if>
+        </set>
+        where id=#{id,jdbcType="VARCHAR}
+    </update>
+</mapper>

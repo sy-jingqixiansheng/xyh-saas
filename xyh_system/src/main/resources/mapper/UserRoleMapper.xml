@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.system.dao.UserRoleMapper">
+
+    <insert id="saveUserRole" >
+        insert ignore into pe_user_role
+        (user_id,role_id) values
+        <foreach item="item" collection="roleIds" separator="," index="index" >
+        (#{id},#{item})
+        </foreach>
+    </insert>
+
+    <select id="byUserIdRoleIds" resultType="java.lang.String">
+
+        select role_id from pe_user_role where user_id=#{userId,jdbcType=VARCHAR}
+
+    </select>
+
+    <delete id="deleteRoleIds" parameterType="java.util.List">
+        delete from pe_user_role where role_id in
+        <foreach collection="roleIdOrLists" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <delete id="deleteUserRole">
+        delete from pe_user_role where user_id=#{userId,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

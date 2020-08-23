@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.company.dao.DepartmentMapper">
+    <resultMap id="BaseResultMap" type="cpm.xyh.entity.company.Department">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="company_id" jdbcType="VARCHAR" property="companyId"/>
+        <result column="pid" jdbcType="VARCHAR" property="pid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="manager_id" jdbcType="VARCHAR" property="managerId"/>
+        <result column="introduce" jdbcType="CLOB" property="introduce"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="manager" jdbcType="VARCHAR" property="manager"/>
+    </resultMap>
+    <sql id="BaseDepartment">
+        id,company_id,pid,name,code,manager,introduce,create_time,manager_id
+    </sql>
+
+    <select id="findByCodeCompanyId" resultMap="BaseResultMap">
+
+        select <include refid="BaseDepartment"></include>
+        from co_department where code=#{code,jdbcType=VARCHAR}
+        and company_id=#{companyId,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="add" parameterType="cpm.xyh.entity.company.Department">
+        insert into co_department
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="companyId != null">company_id,</if>
+            <if test="pid != null">pid,</if>
+            <if test="name != null">name,</if>
+            <if test="code != null">code,</if>
+            <if test="managerId != null">manager_id,</if>
+            <if test="introduce != null">company_address,</if>
+            <if test="createTime != null">create_time,
+            <if test="manager != null">name,</if></if>
+        </trim>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+            <if test="companyId != null">#{companyId,jdbcType=VARCHAR},</if>
+            <if test="pid != null">#{pid,jdbcType=VARCHAR},</if>
+            <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+            <if test="code != null">#{code,jdbcType=VARCHAR},</if>
+            <if test="managerId != null">#{managerId,jdbcType=VARCHAR},</if>
+            <if test="introduce != null">#{introduce,jdbcType=CLOB},</if>
+            <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="manager != null">#{manager,jdbcType=VARCHAR},</if>
+
+        </trim>
+    </insert>
+
+    <insert id="save" parameterType="cpm.xyh.entity.company.Department">
+        insert into co_department
+        (id, pid, company_id,
+        name, code, manager_id,
+        manager,introduce,create_time
+        )
+        values (#{id}, #{pid},
+         #{companyId},
+        #{name},#{code},
+         #{managerId},
+        #{manager},#{introduce},
+         #{createTime}
+        )
+    </insert>
+
+    <select id="findDepartment" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="BaseDepartment"></include>
+        from co_department
+        where id=#{id,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteById" parameterType="String">
+        delete from co_department where id=#{id}
+    </delete>
+
+    <select id="findAll" resultMap="BaseResultMap" parameterType="String">
+        select
+        <include refid="BaseDepartment"></include>
+        from co_department where company_id=#{parseCompanyId,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateDepartment" parameterType="cpm.xyh.entity.company.Department">
+    update co_department
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=VARCHAR},
+            </if>
+            <if test="pid != null">
+                pid = #{pid,jdbcType=TIMESTAMP},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=TIMESTAMP},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=TINYINT},
+            </if>
+            <if test="managerId != null">
+                manager_id = #{managerId,jdbcType=TINYINT},
+            </if>
+            <if test="introduce != null">
+                introduce = #{introduce,jdbcType=CLOB},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="manager != null">
+                manager = #{manager,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

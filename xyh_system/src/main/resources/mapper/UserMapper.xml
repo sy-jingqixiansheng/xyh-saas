@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.system.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="cpm.xyh.entity.system.User">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="role" jdbcType="VARCHAR" property="role"/>
+        <result column="enable_state" jdbcType="INTEGER" property="enableState"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="department_id" jdbcType="VARCHAR" property="departmentId"/>
+        <result column="time_of_entry" jdbcType="TIMESTAMP" property="timeOfEntry"/>
+        <result column="form_of_employment" jdbcType="INTEGER" property="formOfEmployment"/>
+        <result column="work_number" jdbcType="VARCHAR" property="workNumber"/>
+        <result column="form_of_management" jdbcType="VARCHAR" property="formOfManagement"/>
+        <result column="working_city" jdbcType="VARCHAR" property="workingCity"/>
+        <result column="correction_time" jdbcType="TIMESTAMP" property="correctionTime"/>
+        <result column="in_service_status" jdbcType="INTEGER" property="inServiceStatus"/>
+        <result column="company_id" jdbcType="VARCHAR" property="companyId"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="department_name" jdbcType="VARCHAR" property="departmentName"/>
+        <result column="level" jdbcType="VARCHAR" property="level"/>
+        <result column="staff_photo" jdbcType="VARCHAR" property="staffPhoto"/>
+
+   </resultMap>
+    <sql id="BaseUser">
+        id,mobile,username,password,role,enable_state,create_time,
+        department_id,time_of_entry,form_of_employment,working_city,
+        correction_time,in_service_status,company_id,company_name,
+        department_name,level,staff_photo
+    </sql>
+
+    <select id="findUserByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select <include refid="BaseUser"></include> from pe_user where mobile=#{mobile}
+    </select>
+
+    <insert id="saveUserA" parameterType="cpm.xyh.entity.system.User">
+        insert into pe_user
+        (id, mobile, username,
+          password, role, enable_state,
+          create_time, department_id,
+          time_of_entry,
+          form_of_employment, work_number,
+          form_of_management,
+          working_city, correction_time,
+          in_service_status,
+          company_id, company_name,
+          department_name,level,staff_photo)
+        values
+         (#{id,jdbcType=VARCHAR},
+          #{mobile,jdbcType=VARCHAR},
+          #{username,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR},
+          #{role,jdbcType=VARCHAR},
+          #{enableState,jdbcType=INTEGER},
+          #{createTime,jdbcType=TIMESTAMP},
+          #{departmentId,jdbcType=VARCHAR},
+          #{timeOfEntry,jdbcType=TIMESTAMP},
+          #{formOfEmployment,jdbcType=INTEGER},
+          #{workNumber,jdbcType=VARCHAR},
+          #{formOfManagement,jdbcType=VARCHAR},
+          #{workingCity,jdbcType=VARCHAR},
+           #{correctionTime,jdbcType=TIMESTAMP},
+          #{inServiceStatus,jdbcType=INTEGER},
+          #{companyId,jdbcType=VARCHAR},
+          #{companyName,jdbcType=VARCHAR},
+          #{departmentName,jdbcType=VARCHAR},
+          #{level,jdbcType=VARCHAR}),
+          #{staffPhoto,jdbcType=VARCHAR})
+
+    </insert>
+
+    <insert id="saveUser" parameterType="cpm.xyh.entity.system.User">
+        insert into pe_user
+        (id, mobile, username,
+          password, role, enable_state,
+          create_time, department_id,
+          time_of_entry,
+          form_of_employment, work_number,
+          form_of_management,
+          working_city, correction_time,
+          in_service_status,
+          company_id, company_name,
+          department_name,level,staff_photo)
+        values
+         (#{id},
+          #{mobile},
+          #{username},
+          #{password},
+          #{role},
+          #{enableState},
+          #{createTime},
+          #{departmentId},
+          #{timeOfEntry},
+          #{formOfEmployment},
+          #{workNumber},
+          #{formOfManagement},
+          #{workingCity},
+           #{correctionTime},
+          #{inServiceStatus},
+          #{companyId},
+          #{companyName},
+          #{departmentName},
+          #{level},#{staffPhoto})
+    </insert>
+
+    <select id="findByIdUser"  resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="BaseUser"></include>
+        from pe_user where id=#{id,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteById">
+        delete from pe_user where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="cpm.xyh.entity.system.User">
+        update pe_user
+        <set>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=TIMESTAMP},
+            </if>
+            <if test="role != null">
+                role = #{role,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enableState != null">
+                enable_state = #{enableState,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TINYINT},
+            </if>
+            <if test="departmentId != null">
+                department_id = #{departmentId,jdbcType=CLOB},
+            </if>
+            <if test="timeOfEntry != null">
+                time_of_entry = #{timeOfEntry,jdbcType=TIMESTAMP},
+            </if>
+            <if test="formOfEmployment != null">
+                form_of_employment = #{formOfEmployment,jdbcType=VARCHAR},
+            </if>
+            <if test="workNumber != null">
+                work_number = #{workNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="formOfManagement != null">
+                form_of_management = #{formOfManagement,jdbcType=VARCHAR},
+            </if>
+            <if test="workingCity != null">
+                working_city = #{workingCity,jdbcType=VARCHAR},
+            </if>
+            <if test="correctionTime != null">
+                correction_time = #{correctionTime,jdbcType=VARCHAR},
+            </if>
+            <if test="inServiceStatus != null">
+                in_service_status = #{inServiceStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=VARCHAR},
+            </if>
+            <if test="companyName != null">
+                company_name = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentName != null">
+                department_name = #{departmentName,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentName != null">
+                level = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="staffPhoto !=null">
+                staff_photo=#{staffPhoto,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+
+    </update>
+
+<select id="findPageUser" parameterType="cpm.xyh.entity.system.vo.UserPageReqVO" resultType="cpm.xyh.entity.system.User">
+    select
+    <include refid="BaseUser"></include>
+    from pe_user
+    <where>
+        <if test="userId !=null and userId != ''">
+            and id=#{userId}
+        </if>
+        <if test="username !=null and username != ''">
+            and username like concat(#{username},'%')
+        </if>
+        <if test="departmentId !=null and username != ''">
+            and department_id=#{departmentId}
+        </if>
+        <if test="companyId !=null and username != ''">
+            and company_id=#{companyId}
+        </if>
+    </where>
+</select>
+
+    <select id="findAll" parameterType="String" resultMap="BaseResultMap">
+        select <include refid="BaseUser"></include>
+        from pe_user where company_id=#{companyId}
+    </select>
+
+</mapper>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.employee.dao.EmployeeArchiveMapper">
+  <resultMap id="BaseResultMap" type="cpm.xyh.entity.employee.EmployeeArchive">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="op_user" jdbcType="VARCHAR" property="opUser" />
+    <result column="month" jdbcType="VARCHAR" property="month" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="totals" jdbcType="INTEGER" property="totals" />
+    <result column="payrolls" jdbcType="INTEGER" property="payrolls" />
+    <result column="departures" jdbcType="INTEGER" property="departures" />
+    <result column="data" jdbcType="CLOB" property="data" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, op_user, month, company_id, totals, payrolls, departures,data, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from em_archive
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findArchiveByMap" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from em_archive
+    <where>
+    <if test="archMap.companyId != null and archMap.companyId !='' and archMap.year == null and archMap.year == ''">
+      company_id = #{archMap.companyId}
+    </if>
+      <if test="archMap.companyId != null and archMap.companyId !='' and archMap.year != null and archMap.year != ''">
+        company_id = #{archMap.companyId} and month=#{archMap.year}
+      </if>
+    <if test="archMap.year != null and archMap.year != '' and archMap.companyId == null and archMap.companyId ==''">
+      month=#{archMap.year}
+    </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from em_archive
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cpm.xyh.entity.employee.EmployeeArchive">
+    insert into em_archive (id, op_user, month, 
+      company_id, totals, payrolls, 
+      departures, data ,create_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{opUser,jdbcType=VARCHAR}, #{month,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{totals,jdbcType=INTEGER}, #{payrolls,jdbcType=INTEGER}, 
+      #{departures,jdbcType=INTEGER},#{data,jdbcType=LONGVARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cpm.xyh.entity.employee.EmployeeArchive">
+    insert into em_archive
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="opUser != null">
+        op_user,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="totals != null">
+        totals,
+      </if>
+      <if test="payrolls != null">
+        payrolls,
+      </if>
+      <if test="departures != null">
+        departures,
+      </if>
+      <if test="data != null">
+        data,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="opUser != null">
+        #{opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="totals != null">
+        #{totals,jdbcType=INTEGER},
+      </if>
+      <if test="payrolls != null">
+        #{payrolls,jdbcType=INTEGER},
+      </if>
+      <if test="departures != null">
+        #{departures,jdbcType=INTEGER},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cpm.xyh.entity.employee.EmployeeArchive">
+    update em_archive
+    <set>
+      <if test="opUser != null">
+        op_user = #{opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        month = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="totals != null">
+        totals = #{totals,jdbcType=INTEGER},
+      </if>
+      <if test="payrolls != null">
+        payrolls = #{payrolls,jdbcType=INTEGER},
+      </if>
+      <if test="departures != null">
+        departures = #{departures,jdbcType=INTEGER},
+      </if>
+      <if test="data != null">
+        data = #{data,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cpm.xyh.entity.employee.EmployeeArchive">
+    update em_archive
+    set op_user = #{opUser,jdbcType=VARCHAR},
+      month = #{month,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      totals = #{totals,jdbcType=INTEGER},
+      payrolls = #{payrolls,jdbcType=INTEGER},
+      departures = #{departures,jdbcType=INTEGER},
+      data = #{data,jdbcType=LONGVARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

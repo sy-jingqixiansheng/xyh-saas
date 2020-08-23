@@ -1,0 +1,37 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: xyh-gateway
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos服务地址
+    gateway:
+      discovery:
+        locator:
+          enabled: true #gateway可以发现nacos中的微服务
+
+      routes: #-: 表示数组元素，可以配置多个节点
+        - id: xyh-company #配置的唯一标识，可以和微服务同名，也可以起别的名字，区别于其他 Route
+          #将uri的地址修改成注册中心中的微服务地址，网关姜葱nacos中按照名称获取微服务
+          uri: lb://xyh-company #路由指向的目的地 uri，即客户端请求最终被转发到的微服务
+          predicates: #断言的作用是进行条件判断，只有断言都返回真，才会真正的执行路由
+          - Path=/company/**, #路径形式的断言。当匹配这个路径时，断言条件成立
+        - id: xyh-employee
+          uri: lb://xyh-employee
+          predicates:
+          - Path=/employee/**
+        - id: xyh-system
+          uri: lb://xyh-system
+          predicates:
+          - Path=/sys/**
+
